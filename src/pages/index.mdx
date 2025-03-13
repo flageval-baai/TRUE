@@ -1,7 +1,7 @@
 ---
 layout: ../layouts/Layout.astro
-title: Research Project Page Template
-description: Simple project page template for your research paper, built with Astro and Tailwind CSS
+title: "TRUE:Re-examining the Current Success of Vision-Language Models in Text Recognition and Understanding"
+description: Project page for TRUE
 favicon: favicon.svg
 thumbnail: screenshot-light.png
 ---
@@ -23,6 +23,17 @@ import transformer from "../assets/transformer.webp";
 import Splat from "../components/Splat.tsx"
 import dogsDiffc from "../assets/dogs-diffc.png"
 import dogsTrue from "../assets/dogs-true.png"
+
+import diffDoc from "../assets/accuracy_diff_Doc.png"
+import diffScene from "../assets/accuracy_diff_Scene.png"
+import book from "../assets/book.png"
+import diet from "../assets/diet.jpg"
+import doc from "../assets/docvqa.png"
+import fb from "../assets/fb.png"
+import gen from "../assets/gen.jpg"
+import hw from "../assets/hw.jpg"
+import kie from "../assets/kie.png"
+import scene from "../assets/scene.jpg"
 
 
 import CodeBlock from "../components/CodeBlock.astro";
@@ -94,70 +105,123 @@ export const components = {pre: CodeBlock, table: Table}
 
 ## Abstract
 
-This is a live demo for a template you can use to create a simple project page for your research paper. See the code for the template and instructions on how to use it yourself [here](https://github.com/RomanHauksson/academic-project-astro-template). It's made with the [Astro web framework](https://astro.build/) and styled with [Tailwind CSS](https://tailwindcss.com/). You write the content in [MDX](https://mdxjs.com/), which enables markdown formatting like **bold**, _italics_, and ~strikethrough~, as well as custom components like <SmallCaps>small caps.</SmallCaps>
-
+Recent vision-language models (VLMs) have demonstrated impressive performance in text recognition and understanding, as shown by the metrics on a number of text-centric multimodal benchmarks. In this study, we take a closer look at the current success. Following popularly used relevant benchmarks, we conduct more analysis on re-collected and edited data. We find that while more recent VLMs are indeed stronger in text recognition and understanding than earlier models, the strength might have been over-estimated to some extent with the risk of benchmark saturation and overfitting. We discuss the implications and release TRUE, our new benchmark for Text Recognition and Understanding Evaluation, and will keep updating it regularly. We hope our analysis and benchmark could help contribute to relevant progress in the near future.
 </HighlightedSection>
 
-## Figures
+## Risk of data contamination
 
 Use the figure component to display images, videos, equations, or any other element, with an optional caption.
 
 <Figure>
-  <Image slot="figure" source={transformer} altText="Diagram of the transformer deep learning architecture." />
-  <span slot="caption">Diagram of the transformer deep learning architecture.</span>
+  <Image slot="figure" source={diffDoc} altText="Diagram of the transformer deep learning architecture." />
+  <span slot="caption">Accuracy drop on our edited DocVQA.</span>
 </Figure>
 
-## Image comparison slider
-
-An interactive, accessible slider component with keyboard navigation.
 <Figure>
-  <ImageComparison slot="figure" client:load imageUrlOne={dogsDiffc.src} imageUrlTwo={dogsTrue.src} altTextOne="Photo of two dogs running side-by-side in shallow water, lossily compressed using the DiffC algorithm" altTextTwo="Original photo of two dogs running side-by-side in shallow water" />
-  <span slot="caption">A photo of two dogs running side-by-side in shallow water, lossily compressed using the <a href="https://jeremyiv.github.io/diffc-project-page/">DiffC algorithm</a>.</span>
+  <Image slot="figure" source={diffScene} altText="Diagram of the transformer deep learning architecture." />
+  <span slot="caption">Accuracy drop on our edited TextVQA.</span>
 </Figure>
 
-## Two columns
+## 8 Categories of Data
 
-Use the two columns component to display two columns of content. In this example, the first column contains a figure with a YouTube video and the second column contains a figure with a custom [React](https://react.dev/) component. By default, they display side by side, but if the screen is narrow enough (for example, on mobile), they're arranged vertically.
+Our benchmark includes 593 image-text pairs from 8 types of data:
+<p><strong>Scene:</strong> Scene text VQA</p>
+<p><strong>Doc:</strong> Document centric VQA</p>
+<p><strong>KIE:</strong>Receipt key information extraction.</p>
+<p><strong>FB:</strong> Fake Brand.</p>
+<p><strong>Book:</strong> Books on the Bookshelf</p>
+<p><strong>Diet:</strong> Dietary VQA</p>
+<p><strong>HW:</strong> Handwriting Pages</p>
+<p><strong>GEN:</strong> General Text Recognition</p>
 
 <TwoColumns>
   <Figure slot="left">
-    <YouTubeVideo slot="figure" videoId="wjZofJX0v4M" />
-    <span slot="caption">Take a look at this YouTube video.</span>
+      <span slot="title">Scene text VQA</span>
+      <Image slot="figure" source={scene} altText="scene" />
+      <span slot="caption">Q:Truck with number 150729 is from which company?A:WAL MART</span>
   </Figure>
   <Figure slot="right">
-    <Splat slot="figure" client:idle />
-    <span slot="caption">Now look at this <a href="https://en.wikipedia.org/wiki/Gaussian_splatting">Gaussian splat</a>, rendered with a React component.</span>
+    <span slot="title">Document centric VQA</span>
+    <Image slot="figure" source={doc} altText="Scene" />
+    <span slot="caption">Q:Who wrote this article?A:Josh Nathan-Kazis</span>
   </Figure>
 </TwoColumns>
 
-## Heading levels
+<TwoColumns>
+  <Figure slot="left">
+      <span slot="title">Key information extraction</span>
+      <Image slot="figure" source={kie} altText="scene" />
+      <span slot="caption">Q:When was this receipt issued? Answer this question using the text in the image directly.A:12/2/2022</span>
+  </Figure>
+    <Figure slot="right">
+    <span slot="title">Dietary VQA</span>
+    <Image slot="figure" source={diet} altText="Scene" />
+    <span slot="caption">Q:Is the product in the image gluten-free? If the answer is No, please specify the questionable ingredients. Otherwise please answer 'Yes'.A:yes</span>
+  </Figure>
+</TwoColumns>
 
-Use headings to divide your content into sections.
+<TwoColumns>
+  <Figure slot="left">
+      <span slot="title">Books on the Bookshelf</span>
+      <Image slot="figure" source={book} altText="scene" />
+      <span slot="caption">Q:What is the title of the book written by BELTING in the image? Answer this question using the text in the image directly. A:FACE AND MASK</span>
+  </Figure>
+  <Figure slot="right">
+    <span slot="title">Fake Brand</span>
+    <Image slot="figure" source={fb} altText="Scene" />
+    <span slot="caption">Q:What is the brand in the image?A:PolyStation</span>
+  </Figure>
+</TwoColumns>
 
-### Heading 3
+<TwoColumns>
+  <Figure slot="left">
+      <span slot="title">Handwriting Pages</span>
+      <Image slot="figure" source={hw} altText="scene" />
+      <span slot="caption">Q:Extract all text content from the image.A:["wednesday, nine of june 2010.", "Natalia"]</span>
+  </Figure>
+  <Figure slot="right">
+    <span slot="title">General Text Recognition</span>
+    <Image slot="figure" source={gen} altText="Scene" />
+    <span slot="caption">Q:What is the name of the person in the image?A:["GALLOP", "AIR"]</span>
+  </Figure>
+</TwoColumns>
 
-Go down a level to heading 3...
+## Leaderboard
 
-#### Heading 4
+| Model | Overall | Scene | Doc | KIE | FB | Book | Diet | HW | GEN |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| gemini-2.0-flash | **71.50** | **70.13** | 71.43 | 66.67 | 63.33 | **85.03** | 60.34 | **88.89** | 50.00 |
+| gemini-2.0-pro | 69.98 | **70.13** | 70.13 | 47.62 | **73.33** | 75.45 | 64.66 | 73.33 | **68.33** |
+| gpt-4o-2024-11-20 | 65.43 | 64.94 | 53.25 | **76.19** | 56.67 | 80.24 | 55.17 | 62.22 | 63.33 |
+| Qwen2.5-VL-72B-Instruct | 62.73 | 64.94 | 70.13 | 61.90 | 53.33 | 53.89 | 64.66 | 80.00 | 63.33 |
+| qwen-vl-max | 61.55 | **70.13** | 70.13 | 66.67 | 53.33 | 53.29 | 56.03 | 86.67 | 56.67 |
+| InternVL2\_5-78B | 58.85 | 55.84 | 54.55 | 38.10 | 46.67 | 71.26 | 62.07 | 57.78 | 41.67 |
+| Qwen2-VL-72B-Instruct | 55.99 | 64.94 | 62.34 | 57.14 | 53.33 | 43.11 | 62.93 | 73.33 | 46.67 |
+| Pixtral-Large-Instruct-2411 | 55.48 | 44.16 | 71.43 | 57.14 | 40.00 | 53.29 | **65.52** | 55.56 | 43.33 |
+| claude-3-7-sonnet-20250219 | 50.08 | 62.34 | **74.03** | **76.19** | 23.33 | 34.73 | 56.03 | 60.00 | 31.67 |
+| gpt-4o-mini-2024-07-18 | 48.57 | 51.95 | 50.65 | **76.19** | 36.67 | 50.30 | 32.76 | 53.33 | 60.00 |
+| Qwen2.5-VL-7B-Instruct | 48.57 | 57.14 | 54.55 | 66.67 | 56.67 | 47.90 | 27.59 | 62.22 | 51.67 |
+| Molmo-72B-0924 | 45.70 | 50.65 | 48.05 | 47.62 | 33.33 | 49.70 | 45.69 | 37.78 | 36.67 |
+| claude-3-5-sonnet-20241022 | 44.52 | 50.65 | 66.23 | **76.19** | 33.33 | 23.95 | 58.62 | 51.11 | 28.33 |
+| Pixtral-12B-2409 | 41.48 | 31.17 | 67.53 | 38.10 | 30.00 | 32.34 | 54.31 | 44.44 | 26.67 |
+| MiniCPM-o-2\_6 | 41.15 | 44.16 | 58.44 | 52.38 | 20.00 | 33.53 | 34.48 | 62.22 | 40.00 |
+| llava-onevision-qwen2-72b | 40.30 | 49.35 | 50.65 | 42.86 | 23.33 | 27.54 | 58.62 | 15.56 | 41.67 |
+| Meta-Llama-3.2-90B-Vision | 39.80 | 28.57 | 49.35 | 57.14 | 20.00 | 53.89 | 23.28 | 26.67 | 48.33 |
+| InternVL2-Llama3-76B | 38.45 | 32.47 | 37.66 | 23.81 | 33.33 | 47.31 | 47.41 | 13.33 | 31.67 |
+| InternVL2\_5-8B | 38.28 | 40.26 | 44.16 | 33.33 | 20.00 | 41.92 | 37.07 | 35.56 | 33.33 |
+| Qwen2.5-VL-3B-Instruct | 35.75 | 40.26 | 37.66 | 57.14 | 26.67 | 31.14 | 30.17 | 64.44 | 26.67 |
+| Qwen2-VL-7B-Instruct | 33.90 | 38.96 | 33.77 | 66.67 | 23.33 | 23.95 | 27.59 | 66.67 | 36.67 |
+| Molmo-7B-D-0924 | 32.55 | 41.56 | 40.26 | 47.62 | 33.33 | 33.53 | 19.83 | 20.00 | 36.67 |
+| MiniCPM-V-2\_6 | 29.01 | 32.47 | 18.18 | 47.62 | 16.67 | 24.55 | 24.14 | 57.78 | 38.33 |
+| NVLM-D-72B | 25.13 | 35.06 | 36.36 | 19.05 | 13.33 | 22.16 | 33.62 | 6.67 | 11.67 |
+| llava-onevision-qwen2-7b | 24.62 | 29.87 | 25.97 | 19.05 | 16.67 | 19.76 | 33.62 | 11.11 | 28.33 |
+| Qwen2-VL-2B-Instruct | 19.90 | 38.96 | 19.48 | 47.62 | 6.67 | 8.38 | 8.62 | 44.44 | 28.33 |
+| InternVL2-8B | 19.22 | 16.88 | 24.68 | 23.81 | 26.67 | 16.77 | 25.00 | 2.22 | 18.33 |
+| Idefics3-8B-Llama3 | 15.51 | 20.78 | 19.48 | 19.05 | 6.67 | 14.37 | 24.14 | 4.44 | 1.67 |
+| Meta-Llama-3.2-11B-Vision | 10.29 | 2.60 | 16.88 | 42.86 | 6.67 | 17.96 | 2.59 | 0.00 | 3.33 |
+| Phi-3.5-vision-instruct | 10.29 | 5.19 | 22.08 | 4.76 | 23.33 | 5.99 | 13.79 | 4.44 | 6.67 |
 
-...and down again to heading 4.
-
-## LaTeX
-
-You can also add LaTeX formulas, rendered during the build process using [KaTeX](https://katex.org/) so they're quick to load for visitors of your project page. You can write them inline, like this: <LaTeX inline formula="a^2 + b^2 = c^2" />. Or, you can write them as a block:
-
-<LaTeX formula="\int_a^b f(x) dx" />
-
-## Tables
-
-You can add simple tables using [GitHub Flavored Markdown syntax](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/organizing-information-with-tables):
-
-| Model | Accuracy | F1 score | Training time (hours) |
-| :--- | :---: | :---: | :---: |
-| BERT-base | 0.89 | 0.87 | 4.5 |
-| RoBERTa-large | 0.92 | 0.91 | 7.2 |
-| DistilBERT | 0.86 | 0.84 | 2.1 |
-| XLNet | 0.90 | 0.89 | 6.8 |
+*Performance comparison of different vision-language models on various OCR-related tasks of a hard subset.*
 
 ## BibTeX citation
 
