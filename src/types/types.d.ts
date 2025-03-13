@@ -9,6 +9,7 @@ type Link = {
   url: string;
   name: string;
   icon?: string;
+  iconColor?: string;
 }
 
 type Note = {

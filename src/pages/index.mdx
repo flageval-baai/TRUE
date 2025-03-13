@@ -44,35 +44,9 @@ export const components = {pre: CodeBlock, table: Table}
   title={frontmatter.title}
   authors={[
     {
-      name: "Roman Hauksson",
+      name: "BAAI FlagEval Team",
       url: "https://roman.technology",
-      institution: "Independent",
-      notes: ["*", "†"],
-    },
-    {
-      name: "Author Two",
-      institution: "Institution Two",
-      notes: ["*", "†"],
-    },
-    {
-      name: "Author Three",
-      institution: "Institution Three",
-      notes: ["†"],
-    },
-    {
-      name: "Author Four",
-      institution: "Institution Four",
-    },
-  ]}
-  conference="Conference Name"
-  notes={[
-    {
-      symbol: "*",
-      text: "author note one",
-    },
-    {
-      symbol: "†",
-      text: "author note two",
+      notes: [""],
     },
   ]}
   links={[
@@ -92,9 +66,10 @@ export const components = {pre: CodeBlock, table: Table}
       icon: "academicons:arxiv",
     },
     {
-      name: "Bluesky",
+      name: "Dataset",
       url: "",
-      icon: "ri:bluesky-line"
+      icon: "simple-icons:huggingface",
+      iconColor: "#FFD21E",
     }
   ]}
   />
@@ -226,10 +201,10 @@ Our benchmark includes 593 image-text pairs from 8 types of data:
 ## BibTeX citation
 
 ```bibtex
-@misc{roman2024academic,
-  author = "{Roman Hauksson}",
-  title = "Academic Project Page Template",
-  year = "2024",
-  howpublished = "\url{https://research-template.roman.technology}",
+@misc{baaiflageval2025true,
+  author = "{BAAI FlagEval Team}",
+  title = "TRUE:Re-examining the Current Success of Vision-Language Models in Text Recognition and Understanding",
+  year = "2025",
+  howpublished = "\url{https://github.com/flageval-baai/TRUE}",
 }
 ```
