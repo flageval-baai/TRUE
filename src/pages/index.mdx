@@ -24,7 +24,7 @@ import Splat from "../components/Splat.tsx"
 import dogsDiffc from "../assets/dogs-diffc.png"
 import dogsTrue from "../assets/dogs-true.png"
 
-import diffDoc from "../assets/accuracy_diff_Doc.png"
+import diffDoc from "../assets/edited-acc-drop.png"
 import diffScene from "../assets/accuracy_diff_Scene.png"
 import book from "../assets/book.png"
 import diet from "../assets/diet.jpg"
@@ -57,7 +57,7 @@ export const components = {pre: CodeBlock, table: Table}
     },
     {
       name: "Code",
-      url: "https://github.com/RomanHauksson/academic-project-astro-template",
+      url: "https://github.com/flageval-baai/FlagEvalMM",
       icon: "ri:github-line",
     },
     {
@@ -67,14 +67,13 @@ export const components = {pre: CodeBlock, table: Table}
     },
     {
       name: "Dataset",
-      url: "",
+      url: "https://huggingface.co/datasets/BAAI/TRUE",
       icon: "simple-icons:huggingface",
       iconColor: "#FFD21E",
     }
   ]}
   />
 
-<Video source={outside} />
 
 <HighlightedSection>
 
@@ -85,21 +84,15 @@ Recent vision-language models (VLMs) have demonstrated impressive performance in
 
 ## Risk of data contamination
 
-Use the figure component to display images, videos, equations, or any other element, with an optional caption.
-
 <Figure>
   <Image slot="figure" source={diffDoc} altText="Diagram of the transformer deep learning architecture." />
-  <span slot="caption">Accuracy drop on our edited DocVQA.</span>
+  <span slot="caption">Accuracy drop on our edited DocVQA and TextVQA.</span>
 </Figure>
 
-<Figure>
-  <Image slot="figure" source={diffScene} altText="Diagram of the transformer deep learning architecture." />
-  <span slot="caption">Accuracy drop on our edited TextVQA.</span>
-</Figure>
 
 ## 8 Categories of Data
 
-Our benchmark includes 593 image-text pairs from 8 types of data:
+Our benchmark includes x image-text pairs from 8 types of data:
 <p><strong>Scene:</strong> Scene text VQA</p>
 <p><strong>Doc:</strong> Document centric VQA</p>
 <p><strong>KIE:</strong>Receipt key information extraction.</p>
