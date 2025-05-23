@@ -105,8 +105,10 @@ For text understanding, we conduct minimal perturbations on DocVQA and TextVQA, 
 </Figure>
 
 Performance drops on edited images show that: 
-1. Accuracy descent exists on both DocVQA and TextVQA.
-2. Text recognition and understanding in richer textual context(DocVQA) might be slightly more robust than recognizing text from scenes with very little textual context(TextVQA).
+
+(1) Accuracy descent exists on both DocVQA and TextVQA.
+
+(2) Text recognition and understanding in richer textual context(DocVQA) might be slightly more robust than recognizing text from scenes with very little textual context(TextVQA).
 
 <Figure>
   <Image slot="figure" source={diffDoc} altText="Diagram of the performance difference before and after editing." />
@@ -172,7 +174,7 @@ The first version of our benchmark includes 1,146 image-text pairs (a subset of 
   <Figure slot="left">
       <span slot="title">Scene-text understanding</span>
       <Image slot="figure" source={scene} altText="scene" />
-      <span slot="caption">Q: What's the words on this object? A: EAST BAY</span>
+      <span slot="caption">Q: On what date is the festival scheduled featuring Gwada Mike? A: ["July", "22", "2023"]</span>
   </Figure>
     <Figure slot="right">
       <span slot="title">Dietary VQA</span>
